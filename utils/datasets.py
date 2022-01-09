@@ -664,9 +664,7 @@ class LoadImagesAndLabels(Dataset):
 def load_image(self, i):
     # loads 1 image from dataset index 'i', returns im, original hw, resized hw
     im = self.imgs[i]
-    # histogram equal
-    im = hist_equalize(im)
-    #################
+    
     if im is None:  # not cached in ram
         npy = self.img_npy[i]
         if npy and npy.exists():  # load npy
@@ -674,6 +672,9 @@ def load_image(self, i):
         else:  # read image
             path = self.img_files[i]
             im = cv2.imread(path)  # BGR
+            # histogram equal
+            im = hist_equalize(im)
+            #################
             assert im is not None, f'Image Not Found {path}'
         h0, w0 = im.shape[:2]  # orig hw
         r = self.img_size / max(h0, w0)  # ratio
