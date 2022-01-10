@@ -29,7 +29,7 @@ class Albumentations:
                 ], p=0.8),
             
                 A.RandomBrightnessContrast(p=0.5),
-                A.Cutout(num_holes=20, max_h_size=12, max_w_size=12, p=0.7),
+                A.Cutout(num_holes=20, max_h_size=12, max_w_size=12, p=0.7)],
                 bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
 
             LOGGER.info(colorstr('albumentations: ') + ', '.join(f'{x}' for x in self.transform.transforms if x.p))
