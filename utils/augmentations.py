@@ -25,7 +25,7 @@ class Albumentations:
                 A.OneOf([
                 A.CLAHE(p=1),
                 A.IAASharpen(p=1),
-                A.Emboss(p=1)
+                A.Emboss(p=1),
                 A.RandomBrightness(p=1)
                 ], p=0.8),
             
