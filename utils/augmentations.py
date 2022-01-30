@@ -24,10 +24,10 @@ class Albumentations:
             self.transform = A.Compose([
                 A.OneOf([
                 A.CLAHE(p=1),
-                A.IAASharpen(p=1),
+                A.Sharpen(p=1),
                 A.Emboss(p=1),
                 A.RandomBrightness(p=1)
-                ], p=0.8),
+                ], p=1.0),
             
                 A.Cutout(num_holes=20, max_h_size=16, max_w_size=16, p=0.7)],
                 bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
